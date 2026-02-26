@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import type { User } from "entities/user";
 
 const initialUsers: User[] = [
@@ -10,8 +10,18 @@ const initialUsers: User[] = [
 
 export function useUsers() {
     const [users, setUsers] = useState<User[]>(initialUsers);
+
+    // const deleteUser = (id: number) => {
+    //     setUsers(users.filter(user => user.id !== id));
+    // };
+
+    const deleteUser = useCallback((id: number) => {
+      setUsers(prev => prev.filter(user => user.id !== id));
+    }, [])
+    
     
     return {
-      users
+      users,
+      deleteUser
     };
 }
