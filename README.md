@@ -1,73 +1,116 @@
-# React + TypeScript + Vite
+# ReactJS Advanced Course – Mentor Practicum Repository
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📘 О репозитории
 
-Currently, two official plugins are available:
+Этот репозиторий содержит код с практикумов курса
+**«Разработка на ReactJS: продвинутый уровень»**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Здесь публикуются:
 
-## React Compiler
+* примеры кода с занятий,
+* демонстрационные проекты,
+* заготовки для практики,
+* решения, разобранные с ментором,
+* вспомогательные материалы.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Репозиторий обновляется после каждого практикума.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📅 Сроки обучения
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+* Старт: **16 февраля**
+* Завершение: **20 апреля**
+* Занятия проходят **по понедельникам и четвергам в 19:00 (МСК)**
+  *(кроме праздничных недель)*
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🎓 Формат обучения
+
+В рамках курса предусмотрено:
+
+* 9 вебинаров
+* 4 консультации
+* 9 домашних заданий
+* Финальный проект с защитой
+
+Во время обучения вы:
+
+* участвуете в практикумах два раза в неделю;
+* изучаете материалы заранее (до вебинара);
+* выполняете домашние задания;
+* постепенно собираете собственный проект.
+
+Если вы пропустили занятие — запись публикуется на платформе в течение одного рабочего дня.
+
+---
+
+## 📂 Структура репозитория
+
+Примерная структура:
+
+```
+react-advanced-course/
+│
+├── lesson-01/
+│   ├── demo/
+│   └── practice/
+│
+├── lesson-02/
+│   ├── demo/
+│   └── practice/
+│
+└── README.md
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+* `lesson-*` — материалы конкретных занятий
+* `demo` — код, написанный во время практикума
+* `practice` — задания для самостоятельной работы
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Структура может расширяться по мере прохождения курса.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 🚀 Как запустить проект
+
+1. Установите Node.js (рекомендуется LTS-версия).
+2. Перейдите в папку нужного урока:
+
+```bash
+cd lesson-01/demo
 ```
+
+3. Установите зависимости:
+
+```bash
+npm install
+```
+
+4. Запустите проект:
+
+```bash
+npm run dev
+```
+
+
+---
+
+## 📌 Правила работы с репозиторием
+
+* Не изменяйте основной код, если используете его как reference.
+* Для экспериментов создавайте отдельные ветки.
+* Перед отправкой домашнего задания проверяйте сборку проекта.
+* Соблюдайте структуру проекта и нейминг файлов.
+
+---
+
+## 🎯 Цель курса
+
+К окончанию курса вы сможете:
+
+* проектировать архитектуру React-приложения,
+* работать с асинхронностью и API,
+* управлять состоянием приложения,
+* писать масштабируемый и поддерживаемый код,
+* разработать и защитить собственный проект.
