@@ -20,6 +20,9 @@ export const Header: FC = () => {
                     <Link href="/formik" sx={{ mx: 1 }}>
                         Formik
                     </Link>
+                    <Link href="/rhf" sx={{ mx: 1 }}>
+                        RHF
+                    </Link>
                 </Box>
             </Toolbar>
         </AppBar>

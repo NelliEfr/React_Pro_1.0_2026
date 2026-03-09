@@ -1,1 +1,1 @@
-export { Formik as FormikForm } from './ui';
+export { FormikForm } from './ui';
