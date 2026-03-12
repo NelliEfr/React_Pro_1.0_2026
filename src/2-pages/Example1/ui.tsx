@@ -1,13 +1,29 @@
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Box, IconButton, Typography } from '@mui/material';
-import { type FC } from 'react';
+import { useEffect, useRef, type FC } from 'react';
 import { generateProducts, ProductCard } from '5-entities/Products/Card';
 
 const PRIMARY = 'primary' as const;
 const RED = 'error' as const;
 
 export const Example1: FC = () => {
-    const clickHandler = () => {};
+    const metaInfo = useRef({
+        // eslint-disable-next-line react-hooks/purity
+        color: Math.random() > 0.5 ? PRIMARY : RED,
+        clickCount: 0,
+    });
+
+    console.log('Example1');
+
+    const clickHandler = () => {
+        metaInfo.current.clickCount += 1;
+    };
+
+    useEffect(() => {
+        return () => {
+            console.log({ metaInfo });
+        };
+    }, []);
 
     return (
         <Box>
@@ -24,7 +40,7 @@ export const Example1: FC = () => {
                         price={product.price}
                         pictures={product.pictures}
                         actionSlot={
-                            <IconButton onClick={clickHandler} color={PRIMARY}>
+                            <IconButton onClick={clickHandler} color={metaInfo.current.color}>
                                 <ShoppingCartIcon />
                             </IconButton>
                         }

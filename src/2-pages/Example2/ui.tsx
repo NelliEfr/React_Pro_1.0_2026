@@ -1,8 +1,11 @@
 import { Box, TextField, Typography } from '@mui/material';
 import { useState, type FC } from 'react';
+import { usePrevValue } from '6-shared/lib/usePrevValue';
 
 export const Example2: FC = () => {
     const [value, setValue] = useState('');
+
+    const prevValue = usePrevValue(value);
 
     const [value2, setValue2] = useState('');
 
@@ -22,7 +25,7 @@ export const Example2: FC = () => {
                 />
             </Box>
             <Typography variant="body2" align="center" sx={{ mb: 6 }}>
-                Предыдущее состояние:
+                Предыдущее состояние: {prevValue}
             </Typography>
 
             <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>

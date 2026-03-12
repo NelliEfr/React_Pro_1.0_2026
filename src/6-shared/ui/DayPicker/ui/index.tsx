@@ -1,6 +1,6 @@
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import { Box, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
-import { useState, type FC } from 'react';
+import { useEffect, useRef, useState, type FC, type RefObject } from 'react';
 import { DayPicker } from 'react-day-picker';
 import styles from './styles.module.scss';
 
@@ -8,9 +8,10 @@ interface Props {
     onSelect: (newDate: Date | undefined) => void;
     selectedDay: Date | undefined;
     label: string;
+    inputRef?: RefObject<HTMLInputElement | null>;
 }
 
-export const DayPickerWrapper: FC<Props> = ({ label, onSelect, selectedDay }) => {
+export const DayPickerWrapper: FC<Props> = ({ label, inputRef, onSelect, selectedDay }) => {
     const [showDayPicker, setShowDayPicker] = useState(false);
 
     const clickHandler = () => {
@@ -27,12 +28,29 @@ export const DayPickerWrapper: FC<Props> = ({ label, onSelect, selectedDay }) =>
         setShowDayPicker(false);
     };
 
+    const boxRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const clickHandler = (e: PointerEvent) => {
+            if (boxRef.current && !boxRef.current.contains(e.target as Node)) {
+                closeDayPickerHandler();
+            }
+        };
+
+        document.addEventListener('click', clickHandler);
+
+        return () => {
+            document.removeEventListener('click', clickHandler);
+        };
+    }, []);
+
     return (
-        <Box sx={{ position: 'relative' }}>
+        <Box ref={boxRef} sx={{ position: 'relative' }}>
             <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
                 <InputLabel htmlFor="dayPickerButton">{label}</InputLabel>
                 <OutlinedInput
                     onClick={clickHandler}
+                    ref={inputRef}
                     id="dayPickerButton"
                     value={selectedDay ? selectedDay.toDateString() : ''}
                     type="text"

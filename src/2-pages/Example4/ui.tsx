@@ -1,8 +1,15 @@
 import { Box, TextField, Typography } from '@mui/material';
-import { useState, type FC } from 'react';
+import { useEffect, useState, type FC } from 'react';
+import { useThrottle } from '6-shared/lib/useThrottle';
 
 export const Example4: FC = () => {
     const [value, setValue] = useState('');
+
+    const throttledValue = useThrottle(value, 1e3);
+
+    useEffect(() => {
+        console.log('Example4');
+    }, [throttledValue]);
 
     return (
         <Box>
@@ -26,7 +33,7 @@ export const Example4: FC = () => {
             </Typography>
 
             <Typography variant="body2" align="center" sx={{ mb: 6 }}>
-                Throttled value:
+                Throttled value: {throttledValue}
             </Typography>
         </Box>
     );
