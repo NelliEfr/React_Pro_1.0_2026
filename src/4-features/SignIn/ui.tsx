@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Box, Button, Container, TextField, Typography } from '@mui/material';
+import { useThrottle } from '@zh2s/react-utils';
 import type { FC } from 'react';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
 
@@ -28,7 +29,16 @@ export const SignIn: FC = () => {
         formState: { errors, isValid, isSubmitted },
         control,
         handleSubmit,
+        watch,
     } = form;
+
+    // eslint-disable-next-line react-hooks/incompatible-library
+    const { email } = watch();
+
+    const throttledEmail = useThrottle(email, 500);
+
+    // eslint-disable-next-line no-console
+    console.log({ throttledEmail });
 
     const { mutateAsync, isPending } = useSignInApi();
 

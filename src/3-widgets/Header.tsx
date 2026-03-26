@@ -30,7 +30,7 @@ const unauthorizedLinks: HeaderLink[] = [
 ];
 
 export const Header: FC = () => {
-    const accessToken = 'alskdjfalskdjf';
+    const accessToken = 'ksajdflkjasdf';
 
     const links = accessToken ? authorizedLinks : unauthorizedLinks;
 

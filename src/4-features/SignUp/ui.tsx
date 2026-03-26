@@ -51,7 +51,7 @@ export const SignUp: FC = () => {
 
             navigate('/');
         } catch (error) {
-            console.log({ error });
+            console.error({ error });
             toast.error(parseErrorWithZod(error).message);
         }
     };
