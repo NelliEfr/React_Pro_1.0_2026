@@ -1,0 +1,3 @@
+export const MODAL_CONTAINER_ID = 'MODAL_CONTAINER_ID';
+
+export const MODAL_OVERLAY_ID = 'MODAL_OVERLAY_ID';
